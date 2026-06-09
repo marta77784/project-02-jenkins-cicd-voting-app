@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh 'docker build -t ${DOCKERHUB_USERNAME}/vote:${IMAGE_TAG} ./vote'
                 sh 'docker build -t ${DOCKERHUB_USERNAME}/result:${IMAGE_TAG} ./result'
-                sh 'docker build -t ${DOCKERHUB_USERNAME}/worker:${IMAGE_TAG} ./worker'
+                sh 'docker build --platform linux/amd64 -t ${DOCKERHUB_USERNAME}/worker:${IMAGE_TAG} ./worker'
             }
         }
 
