@@ -12,7 +12,7 @@ pipeline {
         stage('Validate Docker Compose') {
             steps {
                 echo 'Validating docker-compose.yml file...'
-                sh 'docker compose config'
+                sh 'docker-compose config || docker compose config'
             }
         }
 
