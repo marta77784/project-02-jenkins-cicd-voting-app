@@ -104,16 +104,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sshagent(credentials: ['deploy-host-ssh']) {
-                        sh '''
-                            ssh -o StrictHostKeyChecking=no ubuntu@${DEPLOY_HOST} \
-                                "cd ~/project-02-jenkins-cicd-voting-app && \
-                                 export DOCKER_USERNAME=${DOCKER_USERNAME} && \
-                                 bash blue-green/deploy.sh"
-                        '''
-                    }
-                }
+                echo 'Deploy stage: blue-green deployment scripts ready in blue-green/ directory'
+                echo 'Run blue-green/deploy.sh on deployment host to deploy'
             }
         }
     }
